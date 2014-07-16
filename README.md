@@ -4,7 +4,7 @@ MipsCpu2
 The second generation of MIPS CPU with pipelined design
 
 
-July.15.2014 <br\>
+*July.15.2014* <br\>
 The RTL should be synthesizable, so i have to consider the implementation of integer add, sub, mul, division and
 for single floating-point arithmetic. The arithmetic core is generally combinational logic, however, considering 
 tapeout technology TSMC28nm and goal running frequency (1GHz). The arithmetic core should be pipelined and have 
@@ -16,7 +16,7 @@ The RTL can be implemented at someday, however, how to hook up the OpenGL driver
 hardware. The library can compile the GLSL language communication with GPU hardware and implement the OpenGL API.
 The assembly code can be generated from the library and format the .so (or .dll) file in the OS. 
 <br\>
-July.15.2014 <br\>
+*July.15.2014* <br\>
 Synthesizing the rhombus_32x32 multiplier under TSMC28nm technology, there is timing issue (slack<0). Need to redesign
 the multiplier architecture. 
 
