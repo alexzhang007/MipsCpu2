@@ -16,7 +16,11 @@ The RTL can be implemented at someday, however, how to hook up the OpenGL driver
 hardware. The library can compile the GLSL language communication with GPU hardware and implement the OpenGL API.
 The assembly code can be generated from the library and format the .so (or .dll) file in the OS. 
 <br\>
-*July.15.2014* <br\>
+*July.16.2014* <br\>
 Synthesizing the rhombus_32x32 multiplier under TSMC28nm technology, there is timing issue (slack<0). Need to redesign
 the multiplier architecture. 
+
+*July.17.2014* <br\>
+The unoptimized the adder_64 has the largest slack=-1.12, optimize it with variable carry ahead adder. The slack -0.48 
+now, The delay is at the ppConcatZ1_reg/RB. 
 
