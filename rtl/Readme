@@ -1,0 +1,125 @@
+/************************************************************************
+Project Name : MipsCpu2 (The second generation MIPS CPU)
+Project Owner: Alex Zhang (cgzhangwei@gmail.com)
+
+Copyright (C) 2014 by Graphics RISC Technology (GRT)
+                      Alex Zhang (cgzhangwei@gmail.com)
+
+This program is free software. you can redistribute it and/or
+modify it under the terms of the GNU General Public License
+as published by the Free Software Foundation; either version 2
+of the License, or (at your option) any later version.
+ 
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+ 
+You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software
+Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+
+************************************************************************/
+
+/************************************************************************
+Filelist
+mpc - MiPsCpu
+************************************************************************/
+mpc_cpu_top.v
+mpc_cpu_define.vh
+mpc_common_util.v
+mpc_instruction_fetch_unit.v
+mpc_instruction_decode_unit.v
+mpc_instruction_schedule_unit.v
+mpc_execution_unit.v
+mpc_aluop_decode.v
+mpc_memeory_unit.v
+mpc_write_back_unit.v
+mpc_control_unit.v
+mpc_integer_add.v - signed and unsign integer add and sub. 
+
+/************************************************************************
+Notice
+************************************************************************/
+The instruction set include :
+1. Float Point operation. Originally, the ID stage, there is only general register group
+   that contains the R0-R15. But now, we need the float point register group that 
+   contains the F0-F15.
+2. Support the instruction that move the float point register value to the general register 
+   group. 
+
+
+/************************************************************************
+Supported Instruction 
+************************************************************************/
+MIPS Core Instructions                  Name           Format
+add                                     add            R
+add immediate                           addi           I
+add unsigned                            addu           R
+add immediate unsigned                  addui          I 
+subtract                                sub            R
+subtract unsigned                       subu           R
+and                                     and            R
+and immediate                           andi           I
+or                                      or             R
+or immediate                            ori            I
+nor                                     nor            R
+shift left logical                      sll            R
+shift right logical                     srl            R
+load upper immediate                    lui            I
+load word                               lw             I
+store word                              sw             I
+load half word unsigned                 lhu            I
+store halfword                          sh             I
+load byte unsigned                      lbu            I
+store byte                              sb             I
+branch on equal                         beq            I
+branch on not equal                     bne            I
+jump                                    j              J
+jump and link                           jal            J
+jump register                           jr             R
+set less than                           slt            R
+set less than immediate                 slti           I
+set less than unsigned                  sltu           R
+set less than immediate unsigned        sltiu          I
+MIPS arithmetic core                    Name           Format
+multiply integer                        mult           R
+multiply unsigned integer               multu          R
+divide integer                          div            R
+divide unsigned integer                 divu           R
+move from Hi                            mfhi           R
+move from Lo                            mflo           R
+move from system control (EPC)          mfc0           R
+floating-point add single               add.s          R
+floating-point substract single         sub.s          R
+floating-point multiply single          mult.s         R
+floating-point divide single            div.s          R
+load word to floating-point single      lwc1           I
+store word to floating-point single     swc1           I
+branch on floating-point true           bc1t           I
+branch on floating-point false          bc1f           I
+floating-point compare single           c.eq.s         R
+floating-point compare single           c.neq.s        R
+floating-point compare single           c.lt.s         R
+floating-point compare single           c.le.s         R
+floating-point compare single           c.gt.s         R
+floating-point compare single           c.ge.s         R
+
+
+
+
+/************************************************************************
+ Technology
+************************************************************************/
+The clock frequency of the design in around [0.8GHz, 1.2GHz]. 
+There will be a lot of combinational gate in the ALU implementation which will
+be the bottle neck of freqeuency. The latency of the gate should be small than 
+tHz-tSetup. 
+/************************************************************************
+ latency
+************************************************************************/
+UnsignedIntegerAddSub - 2 cycles
+IntegerAdd            - 2 cycles
+IntegerSub            - 2 cycles
+
+
